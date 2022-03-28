@@ -1,6 +1,7 @@
 import s from './ImageGallery.module.css';
+import PropTypes from 'prop-types';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
-export default function ImageGallery({ images, onClickImg }) {
+export default function ImageGallery({ images, onClick }) {
   return (
     <ul className={s.ImageGallery}>
       {images.map(({ id, webformatURL, largeImageURL, tags }) => (
@@ -9,9 +10,13 @@ export default function ImageGallery({ images, onClickImg }) {
           webformatURL={webformatURL}
           largeImageURL={largeImageURL}
           tags={tags}
-          onClickImg={onClickImg}
+          onClick={onClick}
         />
       ))}
     </ul>
   );
 }
+ImageGallery.propTypes = {
+  onClick: PropTypes.func,
+  images: PropTypes.array,
+};
